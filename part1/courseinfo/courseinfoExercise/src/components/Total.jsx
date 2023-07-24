@@ -1,5 +1,4 @@
 const Total = (props) => {
-    console.log(props)
     
     let totalSum = 0
     
