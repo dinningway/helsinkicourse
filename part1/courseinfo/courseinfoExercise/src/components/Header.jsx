@@ -1,10 +1,3 @@
-const Header = (props) => {
-    console.log(props)
-    return (
-      <div>
-        <h1>{props.name}</h1>
-      </div>
-    )
-  }
-
+const Header = ({name}) => <h1>{name}</h1>
+//Applied destructuring here
 export default Header;
