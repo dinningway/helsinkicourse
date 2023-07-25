@@ -32,6 +32,12 @@ const App = () => {
     },
   ];
 
+  const total = good + neutral + bad;
+
+  const average = (good - bad) / total;
+
+  const positive = (good / total) * 100;
+
   return (
     <div>
       <Header name={header[0].name} />
@@ -42,6 +48,9 @@ const App = () => {
       <Statistic text="Good: " number={good} />
       <Statistic text="Neutral: " number={neutral} />
       <Statistic text="Bad: " number={bad} />
+      <Statistic text="Total: " number={total} />
+      <Statistic text="Average: " number={average} />
+      <Statistic text="Positive: " number={positive + "%"} />
     </div>
   );
 };
