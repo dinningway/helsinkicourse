@@ -7,20 +7,21 @@ const App = () => {
   const [good, setGood] = useState(0);
   const [neutral, setNeutral] = useState(0);
   const [bad, setBad] = useState(0);
+  const [feedbackGiven, setFeedbackGiven] = useState(false);
 
   const handleGoodClick = () => {
-    console.log(good);
     setGood(good + 1);
+    setFeedbackGiven(!feedbackGiven);
   };
 
   const handleNeutralClick = () => {
-    console.log(neutral);
     setNeutral(neutral + 1);
+    setFeedbackGiven(!feedbackGiven);
   };
 
   const handleBadClick = () => {
-    console.log(bad);
     setBad(bad + 1);
+    setFeedbackGiven(!feedbackGiven);
   };
 
   const header = [
@@ -33,9 +34,7 @@ const App = () => {
   ];
 
   const total = good + neutral + bad;
-
   const average = (good - bad) / total;
-
   const positive = (good / total) * 100;
 
   return (
@@ -45,12 +44,17 @@ const App = () => {
       <Button handleClick={handleNeutralClick} text="Neutral" />
       <Button handleClick={handleBadClick} text="Bad" />
       <Header name={header[1].name} />
-      <Statistic text="Good: " number={good} />
-      <Statistic text="Neutral: " number={neutral} />
-      <Statistic text="Bad: " number={bad} />
-      <Statistic text="Total: " number={total} />
-      <Statistic text="Average: " number={average} />
-      <Statistic text="Positive: " number={positive + "%"} />
+      {total > 0 ? (
+        <div>
+          <Statistic text="Good: " number={good} />
+          <Statistic text="Neutral " number={neutral} />
+          <Statistic text="Bad " number={bad} />
+          <Statistic text="Average " number={average} />
+          <Statistic text="Positive: " number={positive + "%"} />
+        </div>
+      ) : (
+        <Statistic text="No feedback given." feedbackGiven={feedbackGiven} />
+      )}
     </div>
   );
 };
