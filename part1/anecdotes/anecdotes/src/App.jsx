@@ -1,9 +1,9 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import Header from "./components/Header";
 import Button from "./components/Button";
+//import Points from "./components/Points";
 
 const App = () => {
-  const [selected, setSelected] = useState(0);
-
   const anecdotes = [
     "If it hurts, do it more often.",
     "Adding manpower to a late software project makes it later!",
@@ -15,15 +15,51 @@ const App = () => {
     "The only way to go fast, is to go well.",
   ];
 
-  const nextButton = () => {
-    setSelected(selected + 1);
+  const [selected, setSelected] = useState(0);
+  //new Uint8Array(7);  <-- this creates an array with a length of 7
+  const [voteArray, setVote] = useState(new Uint8Array(anecdotes.length));
+  const [best, setBest] = useState(0);
+
+  // Randomizes an indexed anecdote
+  const randomAnecdoteIndex = () => {
+    const anecdotesLength = anecdotes.length;
+    return Math.floor(Math.random() * anecdotesLength);
   };
+
+  //Purpose: Any state within the [selected] array is affected, run the function. Displays the anecdote presently since setSelected() is asynchronous
+  // useEffect(() => {
+  //   console.log(anecdotes[selected]);
+  // }, [selected]);
+
+  // user can view the next anecdote
+  const nextButton = () => {
+    setSelected(randomAnecdoteIndex());
+  };
+
+  // user can vote for their fav. quote
+  const voteButton = () => {
+    const updatedVotes = [...voteArray];
+    updatedVotes[selected] += 1;
+    setVote(updatedVotes);
+  };
+
+const bestOne = () => {
+  
+}
 
   return (
     <div>
-      <div>{anecdotes[selected]}</div>
       <div>
-        <Button handleClick={nextButton} />
+        <Header text="Anecdote of the Day" />
+      </div>
+      <div>{anecdotes[selected]}</div>
+      <div>has {voteArray[selected]} votes!</div>
+      <div>
+        <Button handleClick={voteButton} text="Vote" />
+        <Button handleClick={nextButton} text="Next Anecdote" />
+      </div>
+      <div>
+        <Header text="Anecdote with most Votes" />
       </div>
     </div>
   );

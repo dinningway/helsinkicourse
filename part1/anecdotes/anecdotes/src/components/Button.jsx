@@ -1,5 +1,5 @@
-const Button = ({ handleClick }) => {
-  return <button onClick={handleClick}>Next Anecdote</button>;
+const Button = ({ handleClick, text }) => {
+  return <button onClick={handleClick}>{text}</button>;
 };
 
 export default Button;
