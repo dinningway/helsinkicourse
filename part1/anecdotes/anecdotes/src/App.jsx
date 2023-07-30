@@ -16,9 +16,8 @@ const App = () => {
   ];
 
   const [selected, setSelected] = useState(0);
-  //new Uint8Array(7);  <-- this creates an array with a length of 7
-  const [voteArray, setVote] = useState(new Uint8Array(anecdotes.length));
-  const [best, setBest] = useState(0);
+  const [voteArray, setVote] = useState(new Uint8Array(anecdotes.length)); //new Uint8Array(7);  <-- this creates an array with a length of 7
+  const [topQuoteIndex, setTopQuoteIndex] = useState(0);
 
   // Randomizes an indexed anecdote
   const randomAnecdoteIndex = () => {
@@ -28,6 +27,7 @@ const App = () => {
 
   //Purpose: Any state within the [selected] array is affected, run the function. Displays the anecdote presently since setSelected() is asynchronous
   // useEffect(() => {
+
   //   console.log(anecdotes[selected]);
   // }, [selected]);
 
@@ -38,14 +38,17 @@ const App = () => {
 
   // user can vote for their fav. quote
   const voteButton = () => {
+    // this displays anectoes with their respective votes
     const updatedVotes = [...voteArray];
     updatedVotes[selected] += 1;
     setVote(updatedVotes);
+
+    const highestVoteIndex = updatedVotes.indexOf(Math.max(...updatedVotes));
+    setTopQuoteIndex(highestVoteIndex);
   };
 
-const bestOne = () => {
-  
-}
+  // this displays the best anecote with their respective vote
+  //const bestVotes = voteArray.indexOf(Math.max(...voteArray));
 
   return (
     <div>
@@ -60,6 +63,8 @@ const bestOne = () => {
       </div>
       <div>
         <Header text="Anecdote with most Votes" />
+        <div>{anecdotes[topQuoteIndex]}</div>
+        <div>has {voteArray[topQuoteIndex]} votes!</div>
       </div>
     </div>
   );
