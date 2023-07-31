@@ -72,6 +72,8 @@ var totalAmount = orders.reduce (function(sum,order) {
 
 ### Key-Attributes
 
+TL;DR if an app is rendering a list component, you must include a `key` property.
+
 React needs to know which element to update and reiterate, it just sees a bunch of <li> element. Won't know what to refresh hence you need a `key` identifier, helps React to keep track of what is what.
 
 ```
