@@ -94,4 +94,4 @@ You can do the same as:
 </ul>
 ```
 
-Which accepts the indexed value `i` in this case, as a second parameter. IT IS NOT RECOMMENEDED. This is known as _Anti Pattern_.
+Which accepts the indexed value `i` in this case, as a second parameter. IT IS NOT RECOMMENEDED. This is known as **Anti Pattern**. Why? "[It may break your application and display wrong data!](https://robinpokorny.medium.com/index-as-a-key-is-an-anti-pattern-e0349aece318)".
