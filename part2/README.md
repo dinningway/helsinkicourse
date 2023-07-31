@@ -11,13 +11,14 @@ When using concatenating things in `console.log` for debugging purposes, seperat
 
 ## JavaScript Arrays
 
-I will be using functional programming operators such as `find`, `filer`, and `map` all the time.
+I will be using functional programming operators such as `find`, `filter`, and `map` all the time.
 
-### Higher Order Functions
+### Higher-Order Functions
 
 ✏️ Pros:
-Writing code with less code in less time
-Composition (taking one function and putting it in another function)
+Write code with less code in less time
+Composition (taking functions and putting it in another function as their arg)
+Reusability
 Instead of:
 
 ```
@@ -35,3 +36,62 @@ var triple = function (x) {
 ```
 
 Functions are values!!
+
+### Filter()
+
+A method that takes a function to filter an array. Filter() expects its callback function to return a true or false statement.
+
+Transforms an array to a smaller array. `reject()` does the same thing but inverted. `find()` also does the same thing as `filter()` but only returns the first item.
+
+### Map()
+
+Like filter(), it goes through an array but doesn't throw objects away. map() includes all items in array, expects the callback function to return a transformed object that will be put into the new array (think of[...x] destructor assignment).
+
+Take an array and transform that into an array of the same length, but with each individual item transformed.
+
+var names = animals.map(function (animal) {return animal.name})
+var names = animals.map((animal) => {return animal.name})
+var names = animals.map((animal) => animal.name) Implicitly returned
+
+### Reduce()
+
+It's not specific unlike `filter()`, `map()`, `find()`, etc. Expresses any list transformations. SUPER list transformation to use if you can't find any prebuilt method list tranformation that doesn't fit your project.
+
+```
+var orders = [
+    {amount: 250},
+    {amount: 420},
+    {amount: 100}
+]
+
+var totalAmount = orders.reduce (function(sum,order) {
+    console.log("hello, sum, order)
+    return sum + order.amount
+}, 0)
+```
+
+### Key-Attributes
+
+React needs to know which element to update and reiterate, it just sees a bunch of <li> element. Won't know what to refresh hence you need a `key` identifier, helps React to keep track of what is what.
+
+```
+notes.map(note =>
+  <li key={note.id}>
+    {note.content}
+  </li>
+)
+```
+
+You can do the same as:
+
+```
+<ul>
+  {notes.map((note, i) =>
+    <li key={i}>
+      {note.content}
+    </li>
+  )}
+</ul>
+```
+
+Which accepts the indexed value `i` in this case, as a second parameter. IT IS NOT RECOMMENEDED. This is known as _Anti Pattern_.
