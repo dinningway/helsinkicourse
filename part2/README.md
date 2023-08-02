@@ -97,3 +97,43 @@ You can do the same as:
 ```
 
 Which accepts the indexed value `i` in this case, as a second parameter. IT IS NOT RECOMMENEDED. This is known as **Anti Pattern**. Why? "[It may break your application and display wrong data!](https://robinpokorny.medium.com/index-as-a-key-is-an-anti-pattern-e0349aece318)".
+
+## Forms
+
+We want to utilize and store data within the App component's state when the page updates and gets new notes added. We use `useState` and use it to define a piece of state that gets initialized with the initial notes array passed in the props, like so:
+
+```
+import { useState } from 'react'
+
+const App = (props) => {
+  const [notes, setNotes] = useState(props.notes)
+}
+```
+
+Adding an HTML forms within React:
+
+```
+  const addNote = (event) => {
+    event.preventDefault()
+    console.log('button clicked', event.target)
+  }
+
+  <form onSubmit={addNote}>
+    <input />
+    <button type="submit">save</button>
+  </form>
+```
+
+preventDefault(): "f the event does not get explicitly handled, its default action should not be taken as it normally would be". In this example, it prevents the default action of submitting a form where normally it would have the page reload automatically.
+
+### [Controlled Component](https://react.dev/reference/react-dom/components/input#controlling-an-input-with-a-state-variable)
+
+One way we can access data contained within the form's input element.
+
+### Filtering Displayed Elements
+
+JavaScript provides three different value-comparison operations:
+
+=== — strict equality (triple equals)
+== — loose equality (double equals)
+Object.is()
