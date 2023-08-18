@@ -3,9 +3,15 @@ import Name from "./components/Name";
 import Number from "./components/Number";
 
 const App = () => {
-	const [persons, setPersons] = useState([{ name: "Arto Hellas" }]); //An array that contains all the phone numbers
+	const [persons, setPersons] = useState([
+		{ name: "Arto Hellas", number: "040-123456", id: 1 },
+		{ name: "Ada Lovelace", number: "39-44-5323523", id: 2 },
+		{ name: "Dan Abramov", number: "12-43-234345", id: 3 },
+		{ name: "Mary Poppendieck", number: "39-23-6423122", id: 4 },
+	]); //An array that contains all the phone numbers
 	const [newName, setNewName] = useState(""); //State for storing user-submitted name input
 	const [newNumber, setNewNumber] = useState("");
+	const [showAll, setShowAll] = useState(true);
 
 	const handleNameChange = (event) => {
 		//console.log(event.target.value);
@@ -16,6 +22,10 @@ const App = () => {
 		//console.log(event.target.value);
 		setNewNumber(event.target.value);
 	};
+
+	/*const handleFilterChange = showAll
+  ? persons
+  : persons.filter(note => )*/
 
 	const addName = (event) => {
 		event.preventDefault(); //prevents default action of submitting a form (aka causing the page to reload)
@@ -46,6 +56,10 @@ const App = () => {
 	return (
 		<div>
 			<h2>Phonebook</h2>
+			<div>
+				Filter shown with <input />
+			</div>
+			<h2>Add a new contact</h2>
 			<form onSubmit={addName}>
 				<div>
 					{/*The event handler is called every time a change occurs in the input element.*/}
