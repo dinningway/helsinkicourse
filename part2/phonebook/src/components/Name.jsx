@@ -1,5 +1,5 @@
 const Name = ({ name }) => {
-  return <li>{name.content}</li>;
+  return <li>{name.name}</li>;
 };
 
 export default Name;
