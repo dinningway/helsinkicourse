@@ -1,5 +1,5 @@
 const Name = ({ name }) => {
-  return <li>{name.name}</li>;
+	return <span>{name.name}</span>;
 };
 
 export default Name;

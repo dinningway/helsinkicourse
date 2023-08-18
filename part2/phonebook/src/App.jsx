@@ -1,13 +1,20 @@
 import { useState } from "react";
 import Name from "./components/Name";
+import Number from "./components/Number";
 
 const App = () => {
 	const [persons, setPersons] = useState([{ name: "Arto Hellas" }]); //An array that contains all the phone numbers
 	const [newName, setNewName] = useState(""); //State for storing user-submitted name input
+	const [newNumber, setNewNumber] = useState("");
 
 	const handleNameChange = (event) => {
 		//console.log(event.target.value);
 		setNewName(event.target.value);
+	};
+
+	const handleNumberChange = (event) => {
+		//console.log(event.target.value);
+		setNewNumber(event.target.value);
 	};
 
 	const addName = (event) => {
@@ -26,11 +33,13 @@ const App = () => {
 		} else {
 			const nameObject = {
 				name: newName,
+				number: newNumber,
 				important: Math.random() < 0.5,
 				id: persons.length + 1,
 			};
 			setPersons(persons.concat(nameObject));
 			setNewName("");
+			setNewNumber("");
 		}
 	};
 
@@ -43,13 +52,18 @@ const App = () => {
 					name: <input value={newName} onChange={handleNameChange} />
 				</div>
 				<div>
+					number: <input value={newNumber} onChange={handleNumberChange} />
+				</div>
+				<div>
 					<button type="submit">add</button>
 				</div>
 			</form>
 			<h2>Numbers</h2>
 			<div>
 				{persons.map((person) => (
-					<Name key={person.id} name={person} />
+					<div key={person.id}>
+						<Name name={person} /> <Number number={person} />
+					</div>
 				))}
 			</div>
 			<div>debug: {newName}</div>
