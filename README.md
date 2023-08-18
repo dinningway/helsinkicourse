@@ -4,6 +4,20 @@ This is a repository for me to keep track of my progress and struggles from the 
 
 ## Things I've learned so far:
 
+### ✏️ How to clone a GitHub repository
+
+I decided to work on my (Windows) computer rather than my (Mac) laptop for more screen estate. The main reason why people clone repositories instead of directly downloading is because the `git repo` is included when cloning. I had issues when attempting to clone; I would encounter a git invalid path error. Luckily a [video](https://www.youtube.com/watch?v=qactwdDmluI) popped up that helped resolve it. Inputting the command `git config core.protectntfs false` in the folder via terminal was able to help [bypass](https://confluence.atlassian.com/bitbucketserverkb/error-invalid-path-during-git-clone-to-windows-client-1085186345.html) it.
+
+### ✏️ How to git add a specific folder
+
+`git add .`. That's it. Just gotta make sure I'm in the right folder... [StackOverflow](https://stackoverflow.com/questions/44306606/how-to-git-add-a-whole-folder)
+
+I also learned the existence of this command:
+`git commit -m 'message' -- my-dir`
+[StackOverflow](https://stackoverflow.com/questions/5862233/commit-changes-only-in-one-directory-in-git)
+
+More useful git commands from [StackOverflow](https://stackoverflow.com/questions/7239333/how-do-i-commit-only-some-files)
+
 ### ✏️ create-react-app vs. Vite
 
 `npm create vite@latest` is my savior. I thought it would be a pain to set the environment up but learning how to use Vite saved me a lot of time, and it's fast too! I didn't know it was also made by the same creator that made Vue as well. I want to learn that next.
