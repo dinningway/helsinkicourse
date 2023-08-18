@@ -19,6 +19,7 @@ const App = () => {
     */
 
 		const nameExists = persons.some((person) => person.name === newName);
+		//This uses the .some() method which "tests whether at least one element in the array passes the test implemented by the provided function". In this case, it tests and compares an existing name to a newly added name.
 
 		if (nameExists) {
 			alert(`${newName} is already added to phonebook`);
